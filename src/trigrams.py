@@ -1,4 +1,5 @@
 """Create a block of text that emulates the style of a given txt file."""
+import random 
 
 
 def main(file_path, num_words):
@@ -27,4 +28,24 @@ def list_to_dict(word_list):
         else:
             word_dict[dict_key] = [word_list[i + 2]]
     return word_dict
+
+def dictionary_to_string(words_dict, num_words):
+    """Creat a random string based on a dictionary of owrds"""
+    starting_point = random.choice(list(words_dict.keys()))
+    result = starting_point.split()
+    if num_words == 1:
+        return result[0]
+
+    for _ in range(num_words-2):
+        k_string = ' '.join(result[-2:])
+        if k_string in words_dict:
+            result.append(random.choice(words_dict[k_string]))
+            print(result)
+        else:
+            break
+    return ' '.join(result)
+
+
+
+
 

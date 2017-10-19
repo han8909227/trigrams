@@ -31,3 +31,11 @@ def test_make_dict(words_list, result):
     from trigrams import list_to_dict
     assert list_to_dict(words_list) == result
 
+@pytest.mark.parametrize('words_dict, num_words', [({'any thing': ['else']}, 1), ({'I wish': ['I', 'I'], 'wish I':['may', 'might'], 'may I':['wish'], 'I may':['I']
+}, 10)] )
+
+def test_dictionary_to_string(words_dict, num_words):
+    """Test for lenght of string from dictionary"""
+    from trigrams import dictionary_to_string 
+    assert len(dictionary_to_string(words_dict, num_words).split()) == num_words
+
