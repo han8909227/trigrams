@@ -1,5 +1,5 @@
 """Create a block of text that emulates the style of a given txt file."""
-import random 
+import random
 
 
 def main(file_path, num_words):
@@ -11,6 +11,7 @@ def main(file_path, num_words):
     with open(file_path) as book_file:
         book_data = book_file.read()
     main_dict = list_to_dict(book_to_list(book_data))
+    dictionary_to_string(main_dict, num_words)
 
 
 def book_to_list(book):
@@ -19,7 +20,7 @@ def book_to_list(book):
 
 
 def list_to_dict(word_list):
-    """Create a dictionary with a list of words """
+    """Create a dictionary with a list of words."""
     word_dict = {}
     for i in range(len(word_list) - 2):
         dict_key = word_list[i] + ' ' + word_list[i + 1]
@@ -29,23 +30,21 @@ def list_to_dict(word_list):
             word_dict[dict_key] = [word_list[i + 2]]
     return word_dict
 
+
 def dictionary_to_string(words_dict, num_words):
-    """Creat a random string based on a dictionary of owrds"""
+    """Create a random string based on a dictionary of words."""
     starting_point = random.choice(list(words_dict.keys()))
     result = starting_point.split()
     if num_words == 1:
         return result[0]
 
-    for _ in range(num_words-2):
+    for _ in range(num_words - 2):
         k_string = ' '.join(result[-2:])
         if k_string in words_dict:
             result.append(random.choice(words_dict[k_string]))
-            print(result)
         else:
-            break
+            words = random.choice(list(words_dict.keys()))
+            result.pop()
+            result += words.split()
+        print(result)
     return ' '.join(result)
-
-
-
-
-
