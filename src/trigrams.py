@@ -1,5 +1,6 @@
 """Create a block of text that emulates the style of a given txt file."""
 import random
+import sys
 
 
 def main(file_path, num_words):
@@ -8,10 +9,13 @@ def main(file_path, num_words):
     Create a block of text that is the given number of words
     long that emulates the style of a given txt file.
     """
+    if num_words == 0:
+        return ''
+
     with open(file_path) as book_file:
         book_data = book_file.read()
     main_dict = list_to_dict(book_to_list(book_data))
-    dictionary_to_string(main_dict, num_words)
+    return dictionary_to_string(main_dict, num_words)
 
 
 def book_to_list(book):
@@ -33,8 +37,12 @@ def list_to_dict(word_list):
 
 def dictionary_to_string(words_dict, num_words):
     """Create a random string based on a dictionary of words."""
+    if not num_words or not words_dict:
+        return ''
+
     starting_point = random.choice(list(words_dict.keys()))
     result = starting_point.split()
+
     if num_words == 1:
         return result[0]
 
@@ -46,5 +54,8 @@ def dictionary_to_string(words_dict, num_words):
             words = random.choice(list(words_dict.keys()))
             result.pop()
             result += words.split()
-        print(result)
     return ' '.join(result)
+
+
+if __name__ == '__main__':  # pragma: no cover
+    sys.stdout.write(main(sys.argv[1], int(sys.argv[2])))
