@@ -8,7 +8,7 @@ def main(file_path, num_words):
     Create a block of text that is the given number of words
     long that emulates the style of a given txt file.
     """
-    with open(file_path) as book_file:
+    with open(file_path, 'r') as book_file:
         book_data = book_file.read()
     main_dict = list_to_dict(book_to_list(book_data))
     dictionary_to_string(main_dict, num_words)
