@@ -17,7 +17,7 @@ Can be run directly from the trigrams.py file.
 
 OR
 
-''' python trigrams.py some_book.txt 500 > my_submission.txt'''
+``` python trigrams.py some_book.txt 500 > my_submission.txt```
 
 
 ## Architecture
