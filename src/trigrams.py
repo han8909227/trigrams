@@ -9,7 +9,6 @@ def main(file_path, num_words):
     Create a block of text that is the given number of words
     long that emulates the style of a given txt file.
     """
-
     if num_words == 0:
         return ''
 
