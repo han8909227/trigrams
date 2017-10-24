@@ -35,7 +35,7 @@ def list_to_dict(word_list):
     return word_dict
 
 
-def dictionary_to_string(words_dict, num_words):
+def dictionary_to_string(words_dict=None, num_words=None):
     """Create a random string based on a dictionary of words."""
     if not num_words or not words_dict:
         return ''
